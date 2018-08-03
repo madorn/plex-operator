@@ -1,0 +1,3 @@
+apiVersion: plex.mediaserver.redhat.com/v1alpha1
+kind: Plex
+projectName: plex-operator
