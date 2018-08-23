@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plex-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: plex-operator
+  template:
+    metadata:
+      labels:
+        name: plex-operator
+    spec:
+      containers:
+        - name: plex-operator
+          image: quay.io/madorn/plex-operator:v0.0.1
+          ports:
+          - containerPort: 60000
+            name: metrics
+          command:
+          - plex-operator
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: OPERATOR_NAME
+              value: "plex-operator"
