@@ -79,7 +79,7 @@ type PlexPodPolicy struct {
 	Resources v1.ResourceRequirements `json:"resources,omitempty"`
 }
 
-// SetDefaults sets the default vaules for the Jira spec and returns true if the spec was changed
+// SetDefaults sets the default vaules for the Plex spec and returns true if the spec was changed
 func (p *Plex) SetDefaults() bool {
 	changed := false
 	if len(p.Spec.BaseImage) == 0 {
